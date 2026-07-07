@@ -3,4 +3,5 @@ version: '${version}'
 
 main: org.alifmis.permanentArrow.PermanentArrow
 api-version: '26.1.2'
+folia-supported: true
 load: POSTWORLD
