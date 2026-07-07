@@ -25,13 +25,13 @@ The arrow's display name is checked **case-insensitively**, so `"Permanent"`, `"
 - **API version:** 26.1.2 (Minecraft 1.21.4)
 - **Java:** 21+
 
-The plugin declares `folia-supported: true` and uses no scheduler tasks — purely event-driven, safe on Folia's regionized threading model.
+The plugin supports Folia and uses no scheduler tasks — purely event-driven, safe on Folia's regionized threading model.
 
 ## Installation
 
 1. Download the JAR from [Releases](https://github.com/Alifmis/PermanentArrow/releases).
 2. Drop it into your server's `plugins/` folder.
-3. Restart or `/reload confirm`.
+3. Restart the server
 
 ## Usage
 
@@ -40,23 +40,10 @@ The plugin declares `folia-supported: true` and uses no scheduler tasks — pure
 2. Rename it to `permanent` (or any casing variation).
 3. Take the renamed arrow and shoot it.
 
-### Via command (1.21.4+)
-```
-/give @p arrow[item_name='"permanent"']
-/give @p spectral_arrow[item_name='"permanent"']
-```
-
-Replace `arrow` with `tipped_arrow` for potion variants.
-
-### Obtaining a stack quickly
-```
-/loot give @p loot minecraft:arrows[item_name='"permanent"']
-```
-
 ## Building from Source
 
 ```bash
-./gradlew build
+gradle build
 ```
 
 The JAR is output to `build/libs/PermanentArrow-1.0-SNAPSHOT.jar`.
