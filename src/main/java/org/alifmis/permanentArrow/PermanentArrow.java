@@ -3,7 +3,7 @@ package org.alifmis.permanentArrow;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Arrow;
+import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -34,8 +34,8 @@ public final class PermanentArrow extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onArrowLaunch(ProjectileLaunchEvent event) {
-        // Only care about regular arrows shot by players
-        if (!(event.getEntity() instanceof Arrow arrow)) return;
+        // Only care about arrow-type projectiles shot by players
+        if (!(event.getEntity() instanceof AbstractArrow arrow)) return;
         if (!(arrow.getShooter() instanceof Player)) return;
 
         // Check if the arrow's item stack has the display name "permanent"
@@ -53,7 +53,7 @@ public final class PermanentArrow extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onArrowHit(ProjectileHitEvent event) {
-        if (!(event.getEntity() instanceof Arrow arrow)) return;
+        if (!(event.getEntity() instanceof AbstractArrow arrow)) return;
 
         // Only process permanent arrows
         if (!arrow.getPersistentDataContainer().has(permanentKey, PersistentDataType.BOOLEAN)) return;
@@ -63,7 +63,7 @@ public final class PermanentArrow extends JavaPlugin implements Listener {
         arrow.setLifetimeTicks(Integer.MAX_VALUE);
 
         // Allow any player to pick it up
-        arrow.setPickupRule(Arrow.PickupRule.ALLOWED);
+        arrow.setPickupRule(AbstractArrow.PickupRule.ALLOWED);
 
         ItemStack item = arrow.getItemStack();
         if (item != null && item.getType() != Material.AIR) {
