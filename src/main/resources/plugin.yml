@@ -1,0 +1,6 @@
+name: PermanentArrow
+version: '${version}'
+
+main: org.alifmis.permanentArrow.PermanentArrow
+api-version: '26.1.2'
+load: POSTWORLD
