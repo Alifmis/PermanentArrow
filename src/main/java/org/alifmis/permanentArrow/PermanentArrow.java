@@ -69,6 +69,7 @@ public final class PermanentArrow extends JavaPlugin implements Listener {
         // Allow any player to pick it up
         arrow.setPickupStatus(AbstractArrow.PickupStatus.ALLOWED);
 
+        // keep the "permanent" display name so the player gets a reusable arrow back
         ItemStack item = arrow.getItemStack();
         if (item.getType() != Material.AIR) {
             item.editMeta(m -> m.displayName(Component.text(PERMANENT_NAME)));
